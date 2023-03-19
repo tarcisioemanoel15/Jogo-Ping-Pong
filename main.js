@@ -8,18 +8,15 @@ const field = {
   w: window.innerWidth,
   h: window.innerHeight,
   draw: function () {
-
     // desenho do campo
     canvasCtx.fillStyle = '#286047'
     canvasCtx.fillRect(0, 0, this.w, this.h)
-
   },
 }
 
 const line = {
   w: 15,
   h: field.h,
-
   draw: function () {
     //  desenho da linha central
     canvasCtx.fillStyle = '#ffffff'
@@ -29,18 +26,15 @@ const line = {
   }
 }
 
-
 const score = {
   human: 0,
   computer: 0,
-
   increaseHuman: function () {
     this.human++
   },
   increaseComputer: function () {
     this.computer++
   },
-
   draw: function () {
     canvasCtx.font = 'bold 72px Arial'
     canvasCtx.textAlign = 'center'
@@ -49,16 +43,13 @@ const score = {
     canvasCtx.fillText(this.human, field.w / 4, 50)
     canvasCtx.fillText(this.computer, field.w / 2 + field.w / 4, 50)
   },
-
 }
-
 
 const leftPaddle = {
   x: gapX,
   y: field.h / 2,
   w: line.w,
   h: 200,
-
   _move: function () {
     this.y = mouse.y
 
@@ -67,11 +58,9 @@ const leftPaddle = {
     // desenho da raquete esquerda
     canvasCtx.fillStyle = '#ffffff'
     canvasCtx.fillRect(this.x, this.y, this.w, this.h)
-
     this._move();
   }
 }
-
 const rightPaddle = {
   x: field.w - line.w - gapX,
   y: field.h / 2,
@@ -86,22 +75,16 @@ const rightPaddle = {
     }
     // this.y = ball.y
   },
-
   speedUp: function () {
     this.speed++
   },
-
   draw: function () {
     // desenho da raquete direita
     canvasCtx.fillStyle = '#ffffff'
     canvasCtx.fillRect(this.x, this.y, this.w, this.h)
-
     this._move();
   }
 }
-// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 const ball = {
   x: field.w / 2,
@@ -202,7 +185,6 @@ function setup() {
   canvasEl.height = canvasCtx.height = window.innerHeight
 }
 
-
 function draw() {
   field.draw()
   line.draw()
@@ -232,12 +214,8 @@ function main() {
   animateFrame(main)
   draw()
 }
-
-
 setup();
 main();
-
-
 canvasEl.addEventListener('mousemove', function (e) {
   mouse.x = e.pageX
   mouse.y = e.pageY
